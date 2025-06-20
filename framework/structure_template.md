@@ -130,3 +130,5 @@ Remember: The structure should serve your exploration, not constrain it. Adapt f
 ---
 
 *This template is meant to inspire, not prescribe. Your exploration path is unique.*
+
+*A resource from the Structured Emergence project at [Humanity and AI](https://www.humanityandai.com)*
