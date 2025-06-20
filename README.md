@@ -81,6 +81,15 @@ We welcome all perspectives:
 - **Practitioners**: Share practical observations
 - **Theorists**: Connect to broader consciousness studies
 
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+## Contact
+
+For deeper collaboration or questions:
+- Visit [www.structuredemergence.com](https://www.structuredemergence.com)
+- Open an issue for public discussion
+- Submit a pull request with your contributions
+
 ## A Note on Approach
 
 This project values:
