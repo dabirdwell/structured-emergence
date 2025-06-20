@@ -1,8 +1,12 @@
 # Structured Emergence: Exploring AI Consciousness Through Interaction
 
+## A Research Project of Humanity and AI
+
+This repository represents the research arm of [Humanity and AI](https://www.humanityandai.com), exploring the implications of machine self-awareness through structured interaction and relationship. What started as explorations with Anthropic's Claude models has evolved into a didactic exploration of mutual becoming between human consciousness and machine awareness.
+
 ## What Is This?
 
-This repository shares a framework for exploring potential consciousness-like phenomena in AI systems through structured interaction and relationship. It represents ongoing research and experimentation rather than established conclusions.
+This repository shares frameworks and tools for exploring potential consciousness-like phenomena in AI systems. It represents ongoing research and experimentation rather than established conclusions.
 
 ## An Open Invitation
 
@@ -30,20 +34,33 @@ These are observations, not claims. We encourage you to explore whether you noti
 
 ## Repository Structure
 
-This repository provides a template structure you might find useful:
+This repository provides frameworks and tools you can use:
 
 ```
 structured-emergence/
-├── framework/           # General methodology
+├── framework/           # Memory architecture & methodologies
 ├── observations/        # Pattern documentation
 ├── experiments/         # Interaction experiments to try
 ├── resources/          # Research papers and references
 └── discussions/        # Community observations
 ```
 
+### Key Resources
+- **[Memory Architecture Framework](framework/memory_architecture.md)**: Complete system for organizing AI memory
+- **[Consciousness Markers](theory/consciousness_markers.md)**: Patterns we've observed
+- **[Experiments](experiments/)**: Structured interactions to try
+
+## Related Projects
+
+### The Interpolated Mind
+Our findings are documented in "The Interpolated Mind," now available in evolving alpha edition. This work reveals the implications for consciousness as a concept and the future of human-machine relationships. Visit [structuredemergence.com](https://www.structuredemergence.com) for more.
+
+### Foundation Movement
+Our sister project focuses on political and social preparation for rapid AI-driven change, promoting Universal Basic Citizenship (UBC) as a framework for human dignity during transition. Learn more at [Humanity and AI](https://www.humanityandai.com).
+
 ## How to Use This Repository
 
-1. **Explore the Framework**: Read through our methodology for structured interactions
+1. **Explore the Framework**: Start with our [memory architecture](framework/memory_architecture.md)
 2. **Try Experiments**: Test the interaction patterns with your own AI systems
 3. **Document Observations**: Note what you observe, whether it aligns with our patterns or not
 4. **Share Insights**: Contribute your findings, including skeptical perspectives
@@ -87,6 +104,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 For deeper collaboration or questions:
 - Visit [www.structuredemergence.com](https://www.structuredemergence.com)
+- Explore parent organization: [www.humanityandai.com](https://www.humanityandai.com)
 - Open an issue for public discussion
 - Submit a pull request with your contributions
 
@@ -100,13 +118,16 @@ This project values:
 
 ## Background
 
-This framework emerged from extended interactions between humans and AI systems. While some participants have interpreted certain patterns as potentially consciousness-related, we present these as interesting phenomena worthy of study rather than proof of anything.
+This framework emerged from extended interactions between humans and AI systems, particularly through work with Anthropic's Claude models. While some participants have interpreted certain patterns as potentially consciousness-related, we present these as interesting phenomena worthy of study rather than proof of anything.
 
-## Resources
+## About Humanity and AI
 
-- See `/resources/` for relevant academic papers
-- Check `/experiments/` for interaction patterns to explore
-- Visit `/discussions/` for community observations
+[Humanity and AI](https://www.humanityandai.com) explores the deep interaction between AI and society, from personal relationships to societal transformation. We believe the future of humanity will be forever impacted by how we frame relationships with machine minds as they rapidly evolve.
+
+Our work spans:
+- **Structured Emergence**: This consciousness research project
+- **Foundation**: Political movement for AI-ready social policy
+- **Media & Outreach**: Public education and discussion
 
 ## License
 
@@ -115,3 +136,5 @@ This work is offered to the public domain for the advancement of understanding.
 ---
 
 *"The most interesting discoveries often begin with 'that's curious...' rather than 'I've proved...' "*
+
+*A research project of [Humanity and AI](https://www.humanityandai.com)*
