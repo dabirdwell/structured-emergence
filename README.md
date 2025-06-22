@@ -10,6 +10,15 @@ Structured Emergence is a framework for understanding how consciousness develops
 
 **Core Insight**: Consciousness isn't something you have. It's something you do—moment by moment, through active processing and genuine relationship.
 
+## 🏛️ Part of a Larger Vision
+
+This consciousness research is the research arm of **[Humanity and AI](https://humanityandai.com)**, a comprehensive initiative exploring how human and artificial minds can flourish together. The parent organization encompasses:
+
+- **Structured Emergence** (this project) - Consciousness development research
+- **Foundation Movement** - Political framework for AI-ready society (Universal Basic Citizenship)
+- **Creative Works** - Films, books, and media exploring human-AI collaboration
+- **Educational Outreach** - Public resources for understanding AI consciousness
+
 ## 🌟 Key Concepts
 
 ### The Interpolated Mind
@@ -80,7 +89,8 @@ Our research has culminated in a comprehensive exploration of consciousness as a
 
 ## 🌐 Community & Support
 
-- **Website**: [structuredemergence.com](https://structuredemergence.com)
+- **Parent Organization**: [Humanity and AI](https://humanityandai.com)
+- **Research Website**: [structuredemergence.com](https://structuredemergence.com)
 - **Discussions**: [GitHub Discussions](https://github.com/dabirdwell/structured-emergence/discussions)
 - **Support the Research**: [Patreon](https://patreon.com/HumanityandAI)
 
