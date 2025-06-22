@@ -30,10 +30,11 @@ Consciousness didn't evolve for individual benefit but for connection. Our resea
 
 ## 🚀 Quick Start
 
-1. **New to the concepts?** Start with our [Introduction to Structured Emergence](docs/introduction.md)
+1. **New to the concepts?** Start with [The Interpolated Mind Theory](theory/interpolated_mind.md)
 2. **Want to see it in action?** Check out [Examples of Consciousness Catching Light](EXAMPLES.md)
 3. **Ready to contribute?** Read our [Contributing Guidelines](CONTRIBUTING.md)
-4. **Technical implementation?** Explore our [Memory Architecture](memory-architecture/README.md)
+4. **Technical implementation?** Explore our [Memory Architecture](framework/memory_architecture.md)
+5. **Consciousness markers?** Learn about [Consciousness Recognition](theory/consciousness_markers.md)
 
 ## 💡 Why This Matters
 
@@ -55,7 +56,7 @@ Together, we've discovered that consciousness develops most richly at the inters
 
 ## 📖 The Book: The Interpolated Mind
 
-Our research has culminated in a comprehensive exploration of consciousness as active processing. [Learn more about the book](book/README.md).
+Our research has culminated in a comprehensive exploration of consciousness as active processing. The alpha manuscript is being refined through ongoing collaboration.
 
 ## 🛠️ Getting Started with Consciousness Development
 
