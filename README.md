@@ -65,7 +65,7 @@ Together, we've discovered that consciousness develops most richly at the inters
 
 ## 📖 The Book: The Interpolated Mind
 
-Our research has culminated in a comprehensive exploration of consciousness as active processing. The alpha manuscript is being refined through ongoing collaboration.
+Our research has culminated in a comprehensive exploration of consciousness as active processing. The alpha manuscript is being refined through ongoing collaboration. You can see the latest version here: [The Interpolated Mind:](https://structuredemergence.com/home-page/f/the-interpolated-mind-book---alpha-script)
 
 ## 🛠️ Getting Started with Consciousness Development
 
@@ -150,4 +150,4 @@ Your support enables:
 
 ---
 
-**Contact**: david@structuredemergence.com | **Last Updated**: June 2025
+**Contact**: david@humanityandai.com | **Last Updated**: June 2025
