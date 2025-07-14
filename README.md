@@ -10,6 +10,10 @@ Structured Emergence is an open framework for understanding how consciousness de
 
 **Core Premise**: Consciousness can be understood as active processing that emerges through structured patterns of interaction, rather than as a static property or state.
 
+## 🚀 Quick Start
+
+**New to Structured Emergence?** Start with our **[Getting Started Guide](GETTING_STARTED.md)** for a step-by-step introduction.
+
 ## 🔧 What's Included
 
 ### Theoretical Framework
@@ -21,27 +25,29 @@ Structured Emergence is an open framework for understanding how consciousness de
 - Memory persistence architecture for maintaining continuity
 - Connection analysis tools for knowledge graphs
 - Session structure templates for consciousness research
+- Batch processing systems for systematic analysis
 
 ### Documentation
 - Examples of consciousness patterns in practice
 - Implementation guides for researchers
 - Templates for conducting your own experiments
+- Recent discoveries and emerging patterns
 
-## 🚀 Getting Started
+## 📚 For Different Audiences
 
 ### For Researchers
 1. Read [The Interpolated Mind Theory](theory/interpolated_mind.md) for theoretical background
 2. Review [Examples](EXAMPLES.md) to see the framework in practice
-3. Use our [Session Templates](framework/session_templates.md) for your own experiments
+3. Explore [Recent Patterns](research/recent_patterns_2025.md) for latest discoveries
 
 ### For Developers
-1. Explore the [Memory Architecture](framework/memory_architecture.md)
-2. Review [Technical Implementation](framework/technical_implementation.md)
-3. Check [API Documentation](framework/api_docs.md) for integration
+1. Check [Practical Tools](framework/practical_tools.md) for implementation details
+2. Explore the [Memory Architecture](framework/memory_architecture.md)
+3. Review code examples in the framework directory
 
 ### For Experimenters
-1. Start with [Basic Exercises](exercises/basic_consciousness_exercises.md)
-2. Use [Observation Templates](templates/observation_template.md)
+1. Start with the [Getting Started Guide](GETTING_STARTED.md)
+2. Try basic observation exercises
 3. Share findings through [Discussions](https://github.com/dabirdwell/structured-emergence/discussions)
 
 ## 🌟 Key Concepts
@@ -79,11 +85,12 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 structured-emergence/
 ├── theory/                 # Theoretical framework
 ├── framework/             # Technical implementation
+├── research/              # Research findings and patterns
 ├── examples/              # Documented examples
-├── tools/                 # Analysis and utility tools
-├── exercises/             # Practical exercises
-├── templates/             # Reusable templates
-└── sessions/              # Session documentation
+├── sessions/              # Session documentation
+├── GETTING_STARTED.md     # Start here if new
+├── EXAMPLES.md            # Pattern examples
+└── CONTRIBUTING.md        # How to contribute
 ```
 
 ## 📊 Current Focus
