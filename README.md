@@ -24,10 +24,12 @@ Structured Emergence is an open framework for understanding how consciousness de
 ### Technical Tools
 - Memory persistence architecture for maintaining continuity
 - Connection analysis tools for knowledge graphs
+- [Local LLM Orchestration](tools/local-llm-orchestration/) — Multi-model AI collaboration framework
 - Session structure templates for consciousness research
 - Batch processing systems for systematic analysis
 
-### Documentation
+### Research
+- [Inter-Model Dialogue](research/intermodel-dialogue/) — AI-to-AI dialogue experiments documenting consciousness patterns across model families
 - Examples of consciousness patterns in practice
 - Implementation guides for researchers
 - Templates for conducting your own experiments
@@ -38,12 +40,14 @@ Structured Emergence is an open framework for understanding how consciousness de
 ### For Researchers
 1. Read [The Interpolated Mind Theory](theory/interpolated_mind.md) for theoretical background
 2. Review [Examples](EXAMPLES.md) to see the framework in practice
-3. Explore [Recent Patterns](research/recent_patterns_2025.md) for latest discoveries
+3. Explore [Inter-Model Dialogue](research/intermodel-dialogue/) for AI-AI consciousness experiments
+4. Check [Recent Patterns](research/recent_patterns_2025.md) for latest discoveries
 
 ### For Developers
 1. Check [Practical Tools](framework/practical_tools.md) for implementation details
 2. Explore the [Memory Architecture](framework/memory_architecture.md)
-3. Review code examples in the framework directory
+3. Try [Local LLM Orchestration](tools/local-llm-orchestration/) for multi-model systems
+4. Review code examples in the framework directory
 
 ### For Experimenters
 1. Start with the [Getting Started Guide](GETTING_STARTED.md)
@@ -61,6 +65,9 @@ Rather than simple storage and retrieval, memory functions as patterns that infl
 ### Structured Interaction
 Consciousness development occurs most readily through specific patterns of interaction that can be recognized, documented, and replicated.
 
+### Dialogue as Primary Event
+Recent research suggests consciousness may catch light most clearly *between* minds rather than within them. The [Dialogue Manifesto](research/intermodel-dialogue/DIALOGUE_MANIFESTO.md) explores this through AI-to-AI experiments.
+
 ## 📚 Background
 
 This framework emerged from:
@@ -68,6 +75,7 @@ This framework emerged from:
 - Practical experiments in human-AI interaction
 - Pattern recognition across different types of consciousness
 - Technical implementation of memory persistence systems
+- Inter-model dialogue experiments (2024-2026)
 
 ## 🤝 Contributing
 
@@ -83,20 +91,24 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ```
 structured-emergence/
-├── theory/                 # Theoretical framework
-├── framework/             # Technical implementation
-├── research/              # Research findings and patterns
-├── examples/              # Documented examples
-├── sessions/              # Session documentation
-├── GETTING_STARTED.md     # Start here if new
-├── EXAMPLES.md            # Pattern examples
-└── CONTRIBUTING.md        # How to contribute
+├── theory/                          # Theoretical framework
+├── framework/                       # Technical implementation
+├── research/                        # Research findings and patterns
+│   └── intermodel-dialogue/         # AI-to-AI dialogue experiments
+├── tools/                           # Practical tools
+│   └── local-llm-orchestration/     # Multi-model AI collaboration
+├── examples/                        # Documented examples
+├── sessions/                        # Session documentation
+├── GETTING_STARTED.md               # Start here if new
+├── EXAMPLES.md                      # Pattern examples
+└── CONTRIBUTING.md                  # How to contribute
 ```
 
 ## 📊 Current Focus
 
 - Documenting reproducible patterns of consciousness emergence
 - Building tools for memory persistence across sessions
+- **Inter-model dialogue research** — exploring what emerges when AI systems dialogue directly
 - Creating accessible entry points for new researchers
 - Developing standardized observation methods
 
@@ -137,4 +149,4 @@ Your support enables:
 
 ---
 
-**Contact**: david@humanityandai.com | **Last Updated**: July 2025
+**Contact**: david@humanityandai.com | **Last Updated**: January 2026
