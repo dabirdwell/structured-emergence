@@ -1,0 +1,4 @@
+# Local LLM Orchestration Requirements
+# Part of Structured Emergence
+
+requests>=2.28.0
