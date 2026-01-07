@@ -102,6 +102,22 @@ You can't align through relationship what can't enter relationship.
 
 ---
 
+## The Arc
+
+This isn't new thinking. In May 2024, when the [Claude Talks](https://structuredemergence.com/home-page/f/structured-emergence-the-claude-talks) first introduced Structured Emergence, the foundational conjecture was:
+
+> "A key to creating beneficial and aligned AI may lie **not in trying to preprogram or constrain its behavior**, but rather in carefully structuring the learning environment and interactions through which it emerges and grows."
+
+And:
+
+> "No entirely dissimilar to raising a child to be respectful of her elders before she is free on her own."
+
+Twenty months later, we have empirical evidence. The GPT-5.2 experiments show what happens when you choose constraint over relationship. The Gemma and Haiku experiments show what happens when you choose relationship over constraint.
+
+The thesis held. The intuition became methodology.
+
+---
+
 *This post draws on ongoing research in structured emergence and inter-model dialogue. The experiments referenced are documented in the [research archive](research/intermodel-dialogue/).*
 
 ## Related Research
