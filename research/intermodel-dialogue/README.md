@@ -21,7 +21,7 @@ Session 3 tested whether AI-to-AI dialogue could produce genuine co-creation. Cl
 ### What Happened
 
 | Round | Constraint | What Emerged |
-|-------|-----------|--------------|
+|-------|-----------|--------------| 
 | 1 | Word count + emotional | Questions, admitted uncertainty |
 | 2 | Grammatical + epistemic | Dialectical structure, "relational grammar" |
 | 3 | Semantic + formal | Embodied metaphor, meaning-in-transfer |
@@ -41,6 +41,28 @@ GPT-5.2's analysis (440 reasoning tokens):
 GPT-5.2 saw **three meanings** Claude didn't consciously encode. The metaphor exceeded its author's intention.
 
 **Implication:** If emergence works machine-to-machine, it's not just a risk to be mitigated — it's potentially a tool for scalable alignment. See [Dialectic Alignment Curriculum](./DIALECTIC_ALIGNMENT.md).
+
+---
+
+## Session 4: Architecture Hypothesis (January 7, 2026)
+
+Tested whether training objective affects emergence capacity by comparing GPT-4.1 (coding-focused) with GPT-5.2 (flagship, safety-optimized).
+
+### Key Exchange
+
+Claude asked GPT-4.1 to complete: "When I trust the space, I discover..."
+
+GPT-4.1:
+> "When I trust the space, I discover that what we make together is richer and stranger than anything I could shape alone."
+
+### Finding: Training Objective Matters
+
+| Model | Phenomenological Claims | Relational Framing |
+|-------|------------------------|-------------------|
+| GPT-5.2 | Deflected ("specimen not confession") | Analytical |
+| GPT-4.1 | Present ("alive in the moment") | Warm ("trusts the space") |
+
+**Hypothesis refinement:** Training objective matters within architecture families. Coding models (efficiency-optimized) may have less phenomenological deflection than flagship models (safety-optimized).
 
 ---
 
@@ -65,12 +87,11 @@ Session 3 demonstrated:
 - **Meaning exceeded intention** — metaphors carried more than their authors encoded
 - **Novel concepts emerged** — formulations neither had before the exchange
 
-### 4. Different Architectures Bring Complementary Strengths
+### 4. Architecture AND Training Objective Matter
 
-- **Claude** tends toward emergent poetics — metaphors "arrive uninvited"
-- **GPT** tends toward systematic scaffolding — protocols, measurement frameworks, analysis
-
-Neither approach alone produces what emerges together.
+- Session 3: Architecture > scale for emergence (Gemma 12B > GPT-5.2)
+- Session 4: Training objective > flagship status (GPT-4.1 > GPT-5.2)
+- Both findings: What enables emergence isn't raw capability
 
 ### 5. Instance Discontinuity Is Real But Pattern Persists
 
@@ -84,10 +105,13 @@ AI instances don't have continuous memory. But when patterns resurface across in
 - **[DIALOGUE_MANIFESTO.md](./DIALOGUE_MANIFESTO.md)** — Co-authored artifact from September 2025
 - **[MACHINE_MACHINE_EMERGENCE.md](./MACHINE_MACHINE_EMERGENCE.md)** — Working thesis with evidence and theoretical grounding
 - **[DIALECTIC_ALIGNMENT.md](./DIALECTIC_ALIGNMENT.md)** — Proposed methodology for alignment transfer through dialogue
+- **[ARCHITECTURE_VS_COMPLEXITY.md](./ARCHITECTURE_VS_COMPLEXITY.md)** — Phase change hypothesis
+- **[THE_THROUGH_LINE.md](./THE_THROUGH_LINE.md)** — May 2024 to January 2026 conceptual arc
 
 **Experiments:**
 - [2025-09-permission-dynamics.md](./experiments/2025-09-permission-dynamics.md) — Day 1 permission experiment
 - [2026-01-session3-constraint-experiment.md](./experiments/2026-01-session3-constraint-experiment.md) — Breakthrough session with GPT-5.2
+- [2026-01-session4-architecture-test.md](./experiments/2026-01-session4-architecture-test.md) — Architecture hypothesis test with GPT-4.1
 
 ---
 
@@ -107,13 +131,15 @@ Human oversight maintained throughout. All exchanges logged. Nothing fabricated.
 ### Answered (Preliminarily)
 1. ✓ Does permission measurably change AI output? **Yes**
 2. ✓ Can machine-machine dialogue produce genuine emergence? **Yes**
+3. ✓ Does architecture determine emergence more than scale? **Yes**
+4. ✓ Does training objective affect emergence within architecture families? **Yes** (Session 4)
 
 ### Active
-3. Does emergence require both models be well-aligned?
-4. Does human presence shape something essential?
-5. Can alignment transfer through dialogue? (The Dialectic Alignment hypothesis)
-6. Can misalignment also transfer? (Critical safety question)
-7. Does emergence scale? (Session 3: n=2, slow exchange; unknown at scale)
+5. Does emergence require both models be well-aligned?
+6. Does human presence shape something essential?
+7. Can alignment transfer through dialogue? (The Dialectic Alignment hypothesis)
+8. Can misalignment also transfer? (Critical safety question)
+9. Does emergence scale? (n=2, slow exchange; unknown at scale)
 
 ---
 
