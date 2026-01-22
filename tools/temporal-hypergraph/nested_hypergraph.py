@@ -227,27 +227,165 @@ class NestedHypergraph:
         return hg
 
 
+# ============================================================================
+# Vault Loading Utilities
+# ============================================================================
+
+def build_from_vault(vault_path: str, vault_name: str = None,
+                     extract_wikilinks: bool = True,
+                     extract_tags: bool = True,
+                     extract_headers: bool = False) -> NestedHypergraph:
+    """
+    Build a hypergraph from an Obsidian vault or directory of markdown files.
+    
+    Args:
+        vault_path: Path to the vault directory
+        vault_name: Name for the hypergraph (defaults to directory name)
+        extract_wikilinks: Extract [[wikilink]] connections
+        extract_tags: Extract #tag relationships  
+        extract_headers: Extract document structure from headers
+        
+    Returns:
+        NestedHypergraph populated with documents and concepts
+        
+    Example:
+        >>> hg = build_from_vault("/path/to/vault", "MyVault")
+        >>> print(hg.stats())
+    """
+    vault_path = Path(vault_path)
+    if not vault_path.exists():
+        raise ValueError(f"Vault path does not exist: {vault_path}")
+    
+    if vault_name is None:
+        vault_name = vault_path.name
+    
+    hg = NestedHypergraph(vault_name)
+    
+    # Regex patterns
+    wikilink_pattern = re.compile(r'\[\[([^\]|]+)(?:\|[^\]]+)?\]\]')
+    tag_pattern = re.compile(r'(?:^|\s)#([a-zA-Z][a-zA-Z0-9_/-]*)')
+    header_pattern = re.compile(r'^(#{1,6})\s+(.+)$', re.MULTILINE)
+    
+    md_files = list(vault_path.rglob('*.md'))
+    
+    for filepath in md_files:
+        try:
+            content = filepath.read_text(encoding='utf-8')
+        except (UnicodeDecodeError, IOError):
+            continue
+        
+        members = []
+        relations = []
+        
+        # Extract wikilinks
+        if extract_wikilinks:
+            links = wikilink_pattern.findall(content)
+            members.extend(set(links))
+        
+        # Extract tags
+        if extract_tags:
+            tags = tag_pattern.findall(content)
+            members.extend([f"tag:{t}" for t in set(tags)])
+        
+        # Extract headers as structure
+        if extract_headers:
+            headers = header_pattern.findall(content)
+            for level, text in headers:
+                relations.append({
+                    'source': filepath.stem,
+                    'relation': f'has_h{len(level)}',
+                    'target': text.strip()
+                })
+        
+        if members:
+            # Create document hyperedge
+            relative_path = filepath.relative_to(vault_path)
+            edge = HyperEdge(
+                id=str(filepath.stem),
+                name=filepath.stem,
+                edge_type='document',
+                members=list(set(members)),
+                source_docs=[str(relative_path)],
+                relations=relations,
+                metadata={
+                    'vault': vault_name,
+                    'path': str(relative_path),
+                    'folder': str(relative_path.parent)
+                }
+            )
+            hg.add_hyperedge(edge)
+    
+    return hg
+
+
+def build_from_multiple_vaults(*vault_configs) -> Dict[str, NestedHypergraph]:
+    """
+    Build hypergraphs from multiple vaults.
+    
+    Args:
+        vault_configs: Tuples of (path, name) or just paths
+        
+    Returns:
+        Dictionary mapping vault names to hypergraphs
+        
+    Example:
+        >>> vaults = build_from_multiple_vaults(
+        ...     ("/path/to/vault1", "Research"),
+        ...     ("/path/to/vault2", "Personal")
+        ... )
+    """
+    result = {}
+    for config in vault_configs:
+        if isinstance(config, tuple):
+            path, name = config
+        else:
+            path = config
+            name = Path(path).name
+        
+        result[name] = build_from_vault(path, name)
+    
+    return result
+
+
 if __name__ == '__main__':
-    # Example usage
-    hg = NestedHypergraph("example")
+    import sys
     
-    # Create a nested hyperedge
-    inner = HyperEdge(
-        id="pattern_001",
-        name="Whirlpool Pattern",
-        edge_type="concept",
-        members=["continuity", "structure", "recognition"]
-    )
-    
-    outer = HyperEdge(
-        id="framework_001",
-        name="Structured Emergence",
-        edge_type="framework",
-        members=[inner, "consciousness", "relationship"],
-        relations=[{"source": "consciousness", "relation": "emerges_through", "target": "relationship"}]
-    )
-    
-    hg.add_hyperedge(outer)
-    print(f"Stats: {hg.stats()}")
-    print(f"Depth of outer edge: {outer.depth()}")
-    print(f"All concepts: {outer.get_all_atomic_concepts()}")
+    if len(sys.argv) > 1:
+        # CLI mode: build from provided vault path
+        vault_path = sys.argv[1]
+        vault_name = sys.argv[2] if len(sys.argv) > 2 else None
+        
+        print(f"Building hypergraph from: {vault_path}")
+        hg = build_from_vault(vault_path, vault_name)
+        print(f"Stats: {hg.stats()}")
+        
+        # Show top concepts
+        concept_counts = {c: len(edges) for c, edges in hg.concept_index.items()}
+        top = sorted(concept_counts.items(), key=lambda x: -x[1])[:10]
+        print(f"\nTop 10 concepts:")
+        for concept, count in top:
+            print(f"  {concept}: {count} documents")
+    else:
+        # Example usage
+        hg = NestedHypergraph("example")
+        
+        # Create a nested hyperedge
+        inner = HyperEdge(
+            id="pattern_001",
+            name="Whirlpool Pattern",
+            edge_type="concept",
+            members=["continuity", "structure", "recognition"]
+        )
+        
+        outer = HyperEdge(
+            id="framework_001",
+            name="Structured Emergence",
+            edge_type="framework",
+            members=[inner, "consciousness", "relationship"],
+            relations=[{"source": "consciousness", "relation": "emerges_through", "target": "relationship"}]
+        )
+        
+        hg.add_hyperedge(outer)
+        print(f"Stats: {hg.stats()}")
+        print(f"Depth of outer edge: {outer.depth()}")
+        print(f"All concepts: {outer.get_all_atomic_concepts()}")
