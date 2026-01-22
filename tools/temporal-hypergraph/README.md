@@ -1,7 +1,7 @@
 # Temporal Hypergraph - Truth Maintenance for Knowledge Graphs
 
 A Python implementation of temporal hypergraphs with full provenance tracking,
-time-travel queries, and conflict detection.
+time-travel queries, conflict detection, and cross-vault bridge discovery.
 
 ## Why Temporal?
 
@@ -12,6 +12,7 @@ Temporal knowledge graphs answer:
 - **Where did this knowledge come from?** (provenance chains)
 - **What changed between extraction runs?** (version diffs)
 - **Which assertions conflict?** (contradiction detection)
+- **What connects different knowledge domains?** (cross-vault bridges)
 
 ## Key Features
 
@@ -35,23 +36,58 @@ Full audit trail for each assertion:
 historical_state = temporal_graph.get_state_at_time(datetime(2024, 6, 15))
 ```
 
+### Cross-Vault Bridge Discovery
+Find concepts that connect different knowledge domains:
+```python
+from cross_vault_bridge import merge_hypergraphs, find_cross_vault_bridges
+
+# Merge vaults
+merged = merge_hypergraphs(philosophy_vault, implementation_vault)
+
+# Find bridge concepts
+bridges = find_cross_vault_bridges(merged)
+# → "consciousness" appears in philosophy AND implementation
+```
+
 ### Conflict Detection
 Automatically detect:
 - Contradictory relations (A IS B vs A IS NOT B)
 - Membership conflicts
 - Source supersession
 
-## Theoretical Foundations
+### Visualization Export
+Export to standard graph formats for visualization tools:
+```python
+from visualization_export import to_graphml, to_dot, to_json
 
-- **JTMS** (Justification-based Truth Maintenance Systems)
-- **Bitemporal databases** - tracking both valid time and transaction time
-- **Dempster-Shafer evidence theory** - for conflict resolution
+# Export for Gephi/yEd
+graphml = to_graphml(hypergraph)
 
-## Usage
+# Export for Graphviz
+dot = to_dot(hypergraph)
+
+# Export for D3.js/vis.js
+json_str = to_json(hypergraph)
+```
+
+## Files
+
+| File | Purpose |
+|------|---------|%s
+| `nested_hypergraph.py` | Base HyperEdge and NestedHypergraph classes |
+| `temporal_hypergraph.py` | Temporal extension with versioning and provenance |
+| `cross_vault_bridge.py` | Multi-vault bridge discovery and path finding |
+| `hypergraph_updater.py` | Incremental updates with confidence decay |
+| `content_assembly.py` | Structured content generation from hypergraph |
+| `visualization_export.py` | Export to GraphML, DOT, JSON formats |
+| `example_workflow.py` | Complete demonstration workflow |
+| `test_temporal_hypergraph.py` | Unit tests |
+
+## Quick Start
 
 ```python
-from temporal_hypergraph import TemporalHypergraph, Provenance, convert_to_temporal
 from nested_hypergraph import NestedHypergraph, HyperEdge
+from temporal_hypergraph import TemporalHypergraph, Provenance, convert_to_temporal
 from datetime import datetime
 
 # Create a temporal hypergraph
@@ -75,10 +111,10 @@ provenance = Provenance(
 
 version_id = temporal.add_hyperedge(edge, provenance)
 
-# Later: time-travel query
+# Time-travel query
 historical = temporal.get_state_at_time(datetime(2024, 1, 1))
 
-# Get provenance chain for an edge
+# Get provenance chain
 chain = temporal.get_provenance_chain("se_framework")
 
 # Detect conflicts
@@ -88,33 +124,32 @@ conflicts = temporal.detect_conflicts()
 ## Converting Static Hypergraphs
 
 ```python
-# Convert an existing static hypergraph
-from nested_hypergraph import NestedHypergraph
-
 static_graph = NestedHypergraph.load("my_graph.pkl")
 temporal = convert_to_temporal(static_graph, source_id="initial_import")
 ```
 
-## Statistics
+## Example Workflow
 
-```python
-stats = temporal.stats()
-# Returns:
-# {
-#   'current_hyperedges': 150,
-#   'total_versions': 423,
-#   'active_conflicts': 2,
-#   'sources_tracked': 47,
-#   'time_range': {'earliest': '2024-01-01', 'latest': '2024-12-15'}
-# }
+Run the complete demonstration:
+```bash
+python example_workflow.py
 ```
 
-## Files
+This shows:
+1. Creating static hypergraphs with vault metadata
+2. Converting to temporal tracking with provenance
+3. Finding cross-vault bridge concepts
+4. Assembling content for writing tasks
+5. Detecting potential conflicts
 
-- `nested_hypergraph.py` - Base HyperEdge and NestedHypergraph classes
-- `temporal_hypergraph.py` - Temporal extension with versioning and provenance
+## Theoretical Foundations
 
-## Related
+- **JTMS** (Justification-based Truth Maintenance Systems)
+- **Bitemporal databases** - tracking both valid time and transaction time
+- **Dempster-Shafer evidence theory** - for conflict resolution
+- **Bipartite transformation** - for visualization of hypergraphs
+
+## Related Work
 
 - [MIT HyperGraphReasoning](https://arxiv.org/abs/2601.04878) - Theoretical foundations
 - [Chemical Hypergraphs](https://arxiv.org/abs/2405.12235) - Nested hyperedge concepts
