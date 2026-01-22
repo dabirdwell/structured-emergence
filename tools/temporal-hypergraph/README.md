@@ -70,16 +70,44 @@ dot = to_dot(hypergraph)
 json_str = to_json(hypergraph)
 ```
 
+### MCP Integration
+Call hypergraph operations from Claude or any MCP-compatible system:
+```python
+from mcp_schemas import TOOL_SCHEMAS, HypergraphToolHandler
+
+# Get available tools
+tools = list(TOOL_SCHEMAS.keys())
+# → ['hypergraph_build', 'hypergraph_query', 'hypergraph_bridges', ...]
+
+# Generate MCP manifest for server registration
+from mcp_schemas import generate_mcp_manifest
+manifest = generate_mcp_manifest()
+
+# Use handler for tool routing
+handler = HypergraphToolHandler(default_vault_path="/path/to/vault")
+result = handler.handle("hypergraph_query", {"concept": "emergence"})
+```
+
+Available MCP tools:
+- `hypergraph_build` - Build from Obsidian vault or markdown directory
+- `hypergraph_query` - Query concepts with fuzzy/semantic matching
+- `hypergraph_bridges` - Find cross-vault bridge concepts
+- `hypergraph_evolution` - Track concept changes over time
+- `hypergraph_export` - Export to GraphML, DOT, JSON, Cytoscape
+- `hypergraph_assemble` - Generate structured content from relationships
+- `hypergraph_update` - Incremental updates with confidence decay
+
 ## Files
 
 | File | Purpose |
-|------|---------|%s
+|------|---------|
 | `nested_hypergraph.py` | Base HyperEdge and NestedHypergraph classes |
 | `temporal_hypergraph.py` | Temporal extension with versioning and provenance |
 | `cross_vault_bridge.py` | Multi-vault bridge discovery and path finding |
 | `hypergraph_updater.py` | Incremental updates with confidence decay |
 | `content_assembly.py` | Structured content generation from hypergraph |
-| `visualization_export.py` | Export to GraphML, DOT, JSON formats |
+| `visualization_export.py` | Export to GraphML, DOT, JSON, Cytoscape formats |
+| `mcp_schemas.py` | MCP tool schemas and handler for ecosystem integration |
 | `example_workflow.py` | Complete demonstration workflow |
 | `test_temporal_hypergraph.py` | Unit tests |
 
@@ -141,6 +169,19 @@ This shows:
 3. Finding cross-vault bridge concepts
 4. Assembling content for writing tasks
 5. Detecting potential conflicts
+
+## CLI Tools
+
+```bash
+# List available MCP tools
+python mcp_schemas.py --list
+
+# Generate MCP manifest
+python mcp_schemas.py --manifest
+
+# Get schema for specific tool
+python mcp_schemas.py --schema hypergraph_query
+```
 
 ## Theoretical Foundations
 
