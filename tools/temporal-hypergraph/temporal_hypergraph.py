@@ -106,6 +106,22 @@ class HyperEdgeVersion:
             else:
                 result.append(m)
         return result
+    
+    @classmethod
+    def from_dict(cls, d: Dict) -> 'HyperEdgeVersion':
+        """Reconstruct HyperEdgeVersion from dictionary."""
+        return cls(
+            version_id=d['version_id'],
+            edge_id=d['edge_id'],
+            timestamp=datetime.fromisoformat(d['timestamp']),
+            change_type=ChangeType(d['change_type']),
+            content_hash=d['content_hash'],
+            members=d['members'],  # Keep serialized form for now
+            relations=d['relations'],
+            provenance=[Provenance.from_dict(p) for p in d['provenance']],
+            previous_version_id=d.get('previous_version_id'),
+            metadata=d.get('metadata', {})
+        )
 
 
 @dataclass 
@@ -119,6 +135,31 @@ class Conflict:
     resolved: bool = False
     resolution: Optional[str] = None  # How it was resolved
     resolution_timestamp: Optional[datetime] = None
+    
+    def to_dict(self) -> Dict:
+        return {
+            'conflict_id': self.conflict_id,
+            'concept': self.concept,
+            'conflicting_versions': self.conflicting_versions,
+            'conflict_type': self.conflict_type,
+            'detected_at': self.detected_at.isoformat(),
+            'resolved': self.resolved,
+            'resolution': self.resolution,
+            'resolution_timestamp': self.resolution_timestamp.isoformat() if self.resolution_timestamp else None
+        }
+    
+    @classmethod
+    def from_dict(cls, d: Dict) -> 'Conflict':
+        return cls(
+            conflict_id=d['conflict_id'],
+            concept=d['concept'],
+            conflicting_versions=d['conflicting_versions'],
+            conflict_type=d['conflict_type'],
+            detected_at=datetime.fromisoformat(d['detected_at']),
+            resolved=d.get('resolved', False),
+            resolution=d.get('resolution'),
+            resolution_timestamp=datetime.fromisoformat(d['resolution_timestamp']) if d.get('resolution_timestamp') else None
+        )
 
 
 class TemporalHypergraph:
@@ -455,9 +496,13 @@ class TemporalHypergraph:
                 'doc_index': {k: list(v) for k, v in self.current_hypergraph.doc_index.items()}
             },
             'versions': {k: v.to_dict() for k, v in self.versions.items()},
-            'edge_history': dict(self.edge_history),
+            'edge_history': {k: list(v) for k, v in self.edge_history.items()},
+            'time_index': {k: list(v) for k, v in self.time_index.items()},
+            'provenance_index': {k: list(v) for k, v in self.provenance_index.items()},
+            'concept_versions': {k: list(v) for k, v in self.concept_versions.items()},
             'retracted_edges': list(self.retracted_edges),
-            'conflicts': {k: v.__dict__ for k, v in self.conflicts.items()}
+            'conflicts': {k: v.to_dict() for k, v in self.conflicts.items()},
+            'active_conflicts': list(self.active_conflicts)
         }
         with open(path, 'wb') as f:
             pickle.dump(data, f)
@@ -479,9 +524,19 @@ class TemporalHypergraph:
         thg.current_hypergraph.concept_index = {k: set(v) for k, v in data['current_hypergraph']['concept_index'].items()}
         thg.current_hypergraph.doc_index = {k: set(v) for k, v in data['current_hypergraph']['doc_index'].items()}
         
-        # Reconstruct versions (simplified - would need full deserialization)
-        thg.edge_history = defaultdict(list, data['edge_history'])
-        thg.retracted_edges = set(data['retracted_edges'])
+        # Reconstruct versions
+        thg.versions = {k: HyperEdgeVersion.from_dict(v) for k, v in data['versions'].items()}
+        
+        # Reconstruct indices
+        thg.edge_history = defaultdict(list, {k: list(v) for k, v in data.get('edge_history', {}).items()})
+        thg.time_index = defaultdict(set, {k: set(v) for k, v in data.get('time_index', {}).items()})
+        thg.provenance_index = defaultdict(set, {k: set(v) for k, v in data.get('provenance_index', {}).items()})
+        thg.concept_versions = defaultdict(set, {k: set(v) for k, v in data.get('concept_versions', {}).items()})
+        thg.retracted_edges = set(data.get('retracted_edges', []))
+        
+        # Reconstruct conflicts
+        thg.conflicts = {k: Conflict.from_dict(v) for k, v in data.get('conflicts', {}).items()}
+        thg.active_conflicts = set(data.get('active_conflicts', []))
         
         return thg
 
