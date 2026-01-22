@@ -27,9 +27,9 @@ TOOL_SCHEMAS: Dict[str, Dict[str, Any]] = {
     
     "hypergraph_build": {
         "name": "hypergraph_build",
-        "description": """Build a temporal hypergraph from an Obsidian vault or directory of markdown files.
+        "description": """Build a hypergraph from an Obsidian vault or directory of markdown files.
         
-Extracts concepts and relationships, tracking provenance and temporal evolution.
+Extracts concepts (wikilinks, tags) and relationships, creating a queryable knowledge graph.
 Returns statistics about the built graph including node/edge counts and concept frequencies.""",
         "parameters": {
             "type": "object",
@@ -40,7 +40,7 @@ Returns statistics about the built graph including node/edge counts and concept 
                 },
                 "vault_name": {
                     "type": "string",
-                    "description": "Human-readable name for this vault (used in cross-vault analysis)"
+                    "description": "Human-readable name for this vault (defaults to directory name)"
                 },
                 "extract_wikilinks": {
                     "type": "boolean",
@@ -54,15 +54,8 @@ Returns statistics about the built graph including node/edge counts and concept 
                 },
                 "extract_headers": {
                     "type": "boolean",
-                    "default": True,
+                    "default": False,
                     "description": "Extract document structure from headers"
-                },
-                "min_confidence": {
-                    "type": "number",
-                    "default": 0.5,
-                    "minimum": 0.0,
-                    "maximum": 1.0,
-                    "description": "Minimum confidence threshold for extracted relationships"
                 }
             },
             "required": ["vault_path"]
@@ -71,9 +64,9 @@ Returns statistics about the built graph including node/edge counts and concept 
             "type": "object",
             "properties": {
                 "success": {"type": "boolean"},
-                "nodes": {"type": "integer", "description": "Number of concept nodes"},
-                "edges": {"type": "integer", "description": "Number of hyperedges"},
-                "documents": {"type": "integer", "description": "Number of source documents"},
+                "total_hyperedges": {"type": "integer", "description": "Number of document hyperedges"},
+                "total_concepts": {"type": "integer", "description": "Number of unique concepts"},
+                "total_docs": {"type": "integer", "description": "Number of source documents"},
                 "top_concepts": {
                     "type": "array",
                     "items": {"type": "object"},
@@ -85,41 +78,26 @@ Returns statistics about the built graph including node/edge counts and concept 
     
     "hypergraph_query": {
         "name": "hypergraph_query",
-        "description": """Query the hypergraph for concepts, relationships, and evolution patterns.
+        "description": """Query the hypergraph for concepts and their relationships.
         
-Supports semantic search, temporal queries, and relationship traversal.""",
+Find which documents contain a concept and discover related concepts through
+hyperedge co-occurrence.""",
         "parameters": {
             "type": "object",
             "properties": {
                 "concept": {
                     "type": "string",
-                    "description": "Concept name or search term"
-                },
-                "query_type": {
-                    "type": "string",
-                    "enum": ["exact", "fuzzy", "semantic"],
-                    "default": "fuzzy",
-                    "description": "Match type: exact name, fuzzy substring, or semantic similarity"
+                    "description": "Concept name to search for"
                 },
                 "include_related": {
                     "type": "boolean",
                     "default": True,
-                    "description": "Include directly connected concepts"
+                    "description": "Include co-occurring concepts from same hyperedges"
                 },
-                "depth": {
+                "max_related": {
                     "type": "integer",
-                    "default": 1,
-                    "minimum": 1,
-                    "maximum": 5,
-                    "description": "Traversal depth for relationship discovery"
-                },
-                "time_range": {
-                    "type": "object",
-                    "properties": {
-                        "start": {"type": "string", "format": "date-time"},
-                        "end": {"type": "string", "format": "date-time"}
-                    },
-                    "description": "Filter by temporal range (ISO format)"
+                    "default": 20,
+                    "description": "Maximum related concepts to return"
                 }
             },
             "required": ["concept"]
@@ -130,9 +108,8 @@ Supports semantic search, temporal queries, and relationship traversal.""",
                 "found": {"type": "boolean"},
                 "concept": {"type": "string"},
                 "occurrences": {"type": "integer"},
-                "sources": {"type": "array", "items": {"type": "string"}},
-                "related_concepts": {"type": "array", "items": {"type": "object"}},
-                "evolution": {"type": "array", "items": {"type": "object"}}
+                "documents": {"type": "array", "items": {"type": "string"}},
+                "related_concepts": {"type": "array", "items": {"type": "object"}}
             }
         }
     },
@@ -141,8 +118,8 @@ Supports semantic search, temporal queries, and relationship traversal.""",
         "name": "hypergraph_bridges",
         "description": """Find concepts that bridge multiple knowledge bases (cross-vault analysis).
         
-Identifies shared concepts, parallel developments, and potential integration points
-across separate vaults or knowledge domains.""",
+Identifies shared concepts across separate vaults, ranked by connection strength.
+Useful for discovering integration points between different knowledge domains.""",
         "parameters": {
             "type": "object",
             "properties": {
@@ -152,23 +129,15 @@ across separate vaults or knowledge domains.""",
                     "minItems": 2,
                     "description": "List of vault paths to analyze for bridges"
                 },
-                "min_vaults": {
+                "vault_names": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "Optional names for each vault (same order as paths)"
+                },
+                "top_n": {
                     "type": "integer",
-                    "default": 2,
-                    "minimum": 2,
-                    "description": "Minimum number of vaults a concept must appear in"
-                },
-                "similarity_threshold": {
-                    "type": "number",
-                    "default": 0.8,
-                    "minimum": 0.0,
-                    "maximum": 1.0,
-                    "description": "Threshold for fuzzy concept matching across vaults"
-                },
-                "include_context": {
-                    "type": "boolean",
-                    "default": True,
-                    "description": "Include surrounding context for each bridge"
+                    "default": 20,
+                    "description": "Number of top bridges to return"
                 }
             },
             "required": ["vault_paths"]
@@ -184,74 +153,66 @@ across separate vaults or knowledge domains.""",
                             "concept": {"type": "string"},
                             "vaults": {"type": "array", "items": {"type": "string"}},
                             "strength": {"type": "number"},
-                            "contexts": {"type": "array", "items": {"type": "string"}}
+                            "document_counts": {"type": "object"}
                         }
                     }
                 },
                 "total_bridges": {"type": "integer"},
-                "strongest_connection": {"type": "string"}
+                "merged_stats": {"type": "object"}
             }
         }
     },
     
-    "hypergraph_evolution": {
-        "name": "hypergraph_evolution",
-        "description": """Track how a concept evolves over time across documents.
+    "hypergraph_find_path": {
+        "name": "hypergraph_find_path",
+        "description": """Find conceptual bridges between two concepts via hyperedge intersection.
         
-Shows temporal progression, context shifts, and relationship changes
-to understand how ideas develop in a knowledge base.""",
+Discovers how two concepts are connected through intermediate concepts and
+shared document contexts.""",
         "parameters": {
             "type": "object",
             "properties": {
-                "concept": {
+                "concept_a": {
                     "type": "string",
-                    "description": "Concept to track through time"
+                    "description": "Starting concept"
                 },
-                "granularity": {
+                "concept_b": {
                     "type": "string",
-                    "enum": ["day", "week", "month", "year"],
-                    "default": "month",
-                    "description": "Time grouping for evolution analysis"
+                    "description": "Target concept"
                 },
-                "include_context_snippets": {
-                    "type": "boolean",
-                    "default": True,
-                    "description": "Include text snippets showing concept usage"
-                },
-                "track_relationships": {
-                    "type": "boolean",
-                    "default": True,
-                    "description": "Track how related concepts change over time"
+                "max_hops": {
+                    "type": "integer",
+                    "default": 3,
+                    "minimum": 1,
+                    "maximum": 5,
+                    "description": "Maximum intermediate concepts"
                 }
             },
-            "required": ["concept"]
+            "required": ["concept_a", "concept_b"]
         },
         "returns": {
             "type": "object",
             "properties": {
-                "concept": {"type": "string"},
-                "first_seen": {"type": "string", "format": "date-time"},
-                "last_seen": {"type": "string", "format": "date-time"},
-                "timeline": {
+                "paths": {
                     "type": "array",
                     "items": {
                         "type": "object",
                         "properties": {
-                            "period": {"type": "string"},
-                            "occurrences": {"type": "integer"},
-                            "new_relationships": {"type": "array"},
-                            "context_shift": {"type": "number"}
+                            "type": {"type": "string"},
+                            "hops": {"type": "integer"},
+                            "path": {"type": "array", "items": {"type": "string"}},
+                            "via_edges": {"type": "array", "items": {"type": "string"}}
                         }
                     }
                 },
-                "trend": {"type": "string", "enum": ["growing", "stable", "declining"]}
+                "direct_connection": {"type": "boolean"}
             }
         }
     },
     
     "hypergraph_export": {
         "name": "hypergraph_export",
-        "description": """Export hypergraph to various visualization formats.
+        "description": """Export hypergraph to visualization formats.
         
 Supports GraphML (yEd, Gephi), DOT (Graphviz), JSON, and Cytoscape formats
 for external visualization and analysis tools.""",
@@ -265,31 +226,15 @@ for external visualization and analysis tools.""",
                 },
                 "output_path": {
                     "type": "string",
-                    "description": "Path for output file (optional, returns string if omitted)"
-                },
-                "filter_concepts": {
-                    "type": "array",
-                    "items": {"type": "string"},
-                    "description": "Export only subgraph containing these concepts"
-                },
-                "max_nodes": {
-                    "type": "integer",
-                    "default": 500,
-                    "description": "Maximum nodes to include (for performance)"
+                    "description": "Path for output file"
                 },
                 "include_metadata": {
                     "type": "boolean",
                     "default": True,
-                    "description": "Include temporal and provenance metadata"
-                },
-                "layout_hint": {
-                    "type": "string",
-                    "enum": ["hierarchical", "force", "circular", "temporal"],
-                    "default": "force",
-                    "description": "Suggested layout algorithm for visualization"
+                    "description": "Include vault and document metadata"
                 }
             },
-            "required": ["format"]
+            "required": ["format", "output_path"]
         },
         "returns": {
             "type": "object",
@@ -298,108 +243,54 @@ for external visualization and analysis tools.""",
                 "output_path": {"type": "string"},
                 "nodes_exported": {"type": "integer"},
                 "edges_exported": {"type": "integer"},
-                "format": {"type": "string"}
+                "file_size_bytes": {"type": "integer"}
             }
         }
     },
     
-    "hypergraph_assemble": {
-        "name": "hypergraph_assemble",
-        "description": """Assemble structured content from hypergraph relationships.
+    "hypergraph_stats": {
+        "name": "hypergraph_stats",
+        "description": """Get statistics about the current hypergraph.
         
-Generates organized documentation, relationship maps, or knowledge summaries
-by traversing the hypergraph from a starting concept.""",
+Returns counts, depth metrics, and distribution information.""",
         "parameters": {
             "type": "object",
-            "properties": {
-                "seed_concept": {
-                    "type": "string",
-                    "description": "Starting concept for content assembly"
-                },
-                "depth": {
-                    "type": "integer",
-                    "default": 2,
-                    "minimum": 1,
-                    "maximum": 5,
-                    "description": "How many relationship levels to include"
-                },
-                "output_format": {
-                    "type": "string",
-                    "enum": ["markdown", "outline", "narrative", "structured"],
-                    "default": "markdown",
-                    "description": "Format for assembled content"
-                },
-                "include_sources": {
-                    "type": "boolean",
-                    "default": True,
-                    "description": "Include source document references"
-                },
-                "max_sections": {
-                    "type": "integer",
-                    "default": 10,
-                    "description": "Maximum sections in output"
-                },
-                "temporal_order": {
-                    "type": "boolean",
-                    "default": False,
-                    "description": "Order content chronologically vs by relevance"
-                }
-            },
-            "required": ["seed_concept"]
+            "properties": {}
         },
         "returns": {
             "type": "object",
             "properties": {
-                "content": {"type": "string"},
-                "sections": {"type": "integer"},
-                "concepts_included": {"type": "array", "items": {"type": "string"}},
-                "sources_referenced": {"type": "array", "items": {"type": "string"}}
+                "total_hyperedges": {"type": "integer"},
+                "total_concepts": {"type": "integer"},
+                "total_docs": {"type": "integer"},
+                "max_nesting_depth": {"type": "integer"},
+                "avg_nesting_depth": {"type": "number"},
+                "edge_types": {"type": "object"}
             }
         }
     },
     
-    "hypergraph_update": {
-        "name": "hypergraph_update",
-        "description": """Incrementally update hypergraph with new or modified content.
+    "temporal_convert": {
+        "name": "temporal_convert",
+        "description": """Convert a static hypergraph to a temporal hypergraph with version tracking.
         
-Efficiently processes changes without rebuilding entire graph.
-Applies confidence decay to aging information and tracks freshness.""",
+Enables time-travel queries, provenance tracking, and conflict detection.""",
         "parameters": {
             "type": "object",
             "properties": {
-                "file_path": {
+                "source_id": {
                     "type": "string",
-                    "description": "Path to new/modified markdown file"
-                },
-                "operation": {
-                    "type": "string",
-                    "enum": ["add", "update", "remove"],
-                    "default": "update",
-                    "description": "Type of update operation"
-                },
-                "apply_decay": {
-                    "type": "boolean",
-                    "default": True,
-                    "description": "Apply confidence decay to existing relationships"
-                },
-                "decay_rate": {
-                    "type": "number",
-                    "default": 0.1,
-                    "minimum": 0.0,
-                    "maximum": 1.0,
-                    "description": "How much confidence decays per period"
+                    "default": "initial_import",
+                    "description": "Identifier for this import source"
                 }
-            },
-            "required": ["file_path"]
+            }
         },
         "returns": {
             "type": "object",
             "properties": {
                 "success": {"type": "boolean"},
-                "nodes_affected": {"type": "integer"},
-                "edges_affected": {"type": "integer"},
-                "new_concepts": {"type": "array", "items": {"type": "string"}},
-                "updated_relationships": {"type": "integer"}
+                "total_versions": {"type": "integer"},
+                "edges_with_history": {"type": "integer"}
             }
         }
     }
@@ -427,7 +318,7 @@ def get_tool_schema(name: str) -> Dict[str, Any]:
     return TOOL_SCHEMAS.get(name)
 
 
-def validate_params(tool_name: str, params: Dict[str, Any]) -> tuple[bool, str]:
+def validate_params(tool_name: str, params: Dict[str, Any]) -> tuple:
     """
     Validate parameters against tool schema.
     
@@ -476,7 +367,7 @@ def generate_mcp_manifest() -> Dict[str, Any]:
     return {
         "name": "temporal-hypergraph",
         "version": "1.0.0",
-        "description": "Temporal hypergraph toolkit for knowledge graph operations with provenance tracking",
+        "description": "Hypergraph toolkit for knowledge graph operations on Obsidian vaults",
         "tools": get_tool_list(),
         "capabilities": {
             "supports_streaming": False,
@@ -500,23 +391,14 @@ class HypergraphToolHandler:
     Handler class that routes MCP tool calls to actual implementations.
     
     Usage:
-        handler = HypergraphToolHandler(vault_path="/path/to/vault")
-        result = handler.handle("hypergraph_query", {"concept": "emergence"})
+        handler = HypergraphToolHandler()
+        result = handler.handle("hypergraph_build", {"vault_path": "/path/to/vault"})
     """
     
-    def __init__(self, default_vault_path: str = None):
-        self.default_vault_path = default_vault_path
+    def __init__(self):
         self._hypergraph = None
+        self._temporal = None
         
-    def _ensure_loaded(self, vault_path: str = None):
-        """Lazy load hypergraph from vault."""
-        path = vault_path or self.default_vault_path
-        if self._hypergraph is None and path:
-            from temporal_hypergraph import TemporalHypergraph
-            self._hypergraph = TemporalHypergraph()
-            # Would load from vault here
-        return self._hypergraph
-    
     def handle(self, tool_name: str, params: Dict[str, Any]) -> Dict[str, Any]:
         """
         Route tool call to appropriate handler.
@@ -538,10 +420,10 @@ class HypergraphToolHandler:
             "hypergraph_build": self._handle_build,
             "hypergraph_query": self._handle_query,
             "hypergraph_bridges": self._handle_bridges,
-            "hypergraph_evolution": self._handle_evolution,
+            "hypergraph_find_path": self._handle_find_path,
             "hypergraph_export": self._handle_export,
-            "hypergraph_assemble": self._handle_assemble,
-            "hypergraph_update": self._handle_update,
+            "hypergraph_stats": self._handle_stats,
+            "temporal_convert": self._handle_temporal_convert,
         }
         
         handler = handlers.get(tool_name)
@@ -555,125 +437,179 @@ class HypergraphToolHandler:
     
     def _handle_build(self, params: Dict) -> Dict:
         """Build hypergraph from vault."""
-        from temporal_hypergraph import TemporalHypergraph
+        from nested_hypergraph import build_from_vault
         
-        vault_path = params["vault_path"]
-        self._hypergraph = TemporalHypergraph()
-        self._hypergraph.build_from_vault(vault_path)
+        self._hypergraph = build_from_vault(
+            params["vault_path"],
+            vault_name=params.get("vault_name"),
+            extract_wikilinks=params.get("extract_wikilinks", True),
+            extract_tags=params.get("extract_tags", True),
+            extract_headers=params.get("extract_headers", False)
+        )
         
-        stats = self._hypergraph.get_statistics()
+        stats = self._hypergraph.stats()
+        
+        # Get top concepts
+        concept_counts = {c: len(edges) for c, edges in self._hypergraph.concept_index.items()}
+        top = sorted(concept_counts.items(), key=lambda x: -x[1])[:10]
+        
         return {
             "success": True,
-            "nodes": stats.get("nodes", 0),
-            "edges": stats.get("hyperedges", 0),
-            "documents": stats.get("documents", 0),
-            "top_concepts": stats.get("top_concepts", [])[:10]
+            **stats,
+            "top_concepts": [{"concept": c, "count": n} for c, n in top]
         }
     
     def _handle_query(self, params: Dict) -> Dict:
-        """Query the hypergraph."""
-        hg = self._ensure_loaded()
-        if not hg:
-            return {"success": False, "error": "No hypergraph loaded"}
+        """Query the hypergraph for a concept."""
+        if not self._hypergraph:
+            return {"success": False, "error": "No hypergraph loaded. Call hypergraph_build first."}
         
         concept = params["concept"]
-        results = hg.query_concept(concept)
+        edge_ids = self._hypergraph.concept_index.get(concept, set())
+        
+        if not edge_ids:
+            return {"found": False, "concept": concept, "occurrences": 0}
+        
+        # Get documents containing this concept
+        documents = []
+        related_concepts = {}
+        
+        for eid in edge_ids:
+            edge = self._hypergraph.hyperedges[eid]
+            documents.extend(edge.source_docs)
+            
+            # Collect co-occurring concepts
+            if params.get("include_related", True):
+                for member in edge.members:
+                    if isinstance(member, str) and member != concept:
+                        related_concepts[member] = related_concepts.get(member, 0) + 1
+        
+        # Sort related by frequency
+        max_related = params.get("max_related", 20)
+        top_related = sorted(related_concepts.items(), key=lambda x: -x[1])[:max_related]
         
         return {
-            "found": results is not None,
+            "found": True,
             "concept": concept,
-            **results
+            "occurrences": len(edge_ids),
+            "documents": list(set(documents)),
+            "related_concepts": [{"concept": c, "co_occurrences": n} for c, n in top_related]
         }
     
     def _handle_bridges(self, params: Dict) -> Dict:
         """Find cross-vault bridges."""
-        from cross_vault_bridge import CrossVaultBridgeFinder
+        from nested_hypergraph import build_from_vault
+        from cross_vault_bridge import merge_hypergraphs, find_cross_vault_bridges
         
-        finder = CrossVaultBridgeFinder()
-        for path in params["vault_paths"]:
-            finder.add_vault(path)
+        vault_paths = params["vault_paths"]
+        vault_names = params.get("vault_names", [])
         
-        bridges = finder.find_bridges(
-            min_vaults=params.get("min_vaults", 2),
-            similarity_threshold=params.get("similarity_threshold", 0.8)
+        # Build hypergraphs for each vault
+        hypergraphs = []
+        for i, path in enumerate(vault_paths):
+            name = vault_names[i] if i < len(vault_names) else None
+            hg = build_from_vault(path, name)
+            hypergraphs.append(hg)
+        
+        # Merge and find bridges
+        merged = hypergraphs[0]
+        for hg in hypergraphs[1:]:
+            merged = merge_hypergraphs(merged, hg)
+        
+        bridges = find_cross_vault_bridges(merged)
+        
+        # Format results
+        top_n = params.get("top_n", 20)
+        sorted_bridges = sorted(bridges, key=lambda b: -b.strength())[:top_n]
+        
+        return {
+            "bridges": [
+                {
+                    "concept": b.concept,
+                    "vaults": list(b.vaults),
+                    "strength": b.strength(),
+                    "document_counts": b.vault_doc_counts
+                }
+                for b in sorted_bridges
+            ],
+            "total_bridges": len(bridges),
+            "merged_stats": merged.stats()
+        }
+    
+    def _handle_find_path(self, params: Dict) -> Dict:
+        """Find paths between concepts."""
+        if not self._hypergraph:
+            return {"success": False, "error": "No hypergraph loaded. Call hypergraph_build first."}
+        
+        paths = self._hypergraph.find_bridges(
+            params["concept_a"],
+            params["concept_b"],
+            max_hops=params.get("max_hops", 3)
         )
         
         return {
-            "bridges": bridges[:50],  # Limit response size
-            "total_bridges": len(bridges),
-            "strongest_connection": bridges[0]["concept"] if bridges else None
+            "paths": paths,
+            "direct_connection": any(p["type"] == "direct" for p in paths)
         }
-    
-    def _handle_evolution(self, params: Dict) -> Dict:
-        """Track concept evolution."""
-        hg = self._ensure_loaded()
-        if not hg:
-            return {"success": False, "error": "No hypergraph loaded"}
-        
-        return hg.track_evolution(
-            params["concept"],
-            granularity=params.get("granularity", "month")
-        )
     
     def _handle_export(self, params: Dict) -> Dict:
         """Export to visualization format."""
-        from visualization_export import HypergraphExporter
+        if not self._hypergraph:
+            return {"success": False, "error": "No hypergraph loaded. Call hypergraph_build first."}
         
-        hg = self._ensure_loaded()
-        if not hg:
-            return {"success": False, "error": "No hypergraph loaded"}
+        from visualization_export import save_graphml, save_dot, save_json, to_cytoscape_json
+        import os
         
-        exporter = HypergraphExporter(hg)
-        format_map = {
-            "graphml": exporter.to_graphml,
-            "dot": exporter.to_dot,
-            "json": exporter.to_json,
-            "cytoscape": exporter.to_cytoscape
-        }
+        format_type = params["format"]
+        output_path = params["output_path"]
         
-        export_func = format_map.get(params["format"])
-        if not export_func:
-            return {"success": False, "error": f"Unknown format: {params['format']}"}
+        if format_type == "graphml":
+            save_graphml(self._hypergraph, output_path)
+        elif format_type == "dot":
+            save_dot(self._hypergraph, output_path)
+        elif format_type == "json":
+            save_json(self._hypergraph, output_path)
+        elif format_type == "cytoscape":
+            cy_json = to_cytoscape_json(self._hypergraph)
+            with open(output_path, 'w') as f:
+                f.write(cy_json)
+        else:
+            return {"success": False, "error": f"Unknown format: {format_type}"}
         
-        output_path = params.get("output_path")
-        result = export_func(output_path)
+        file_size = os.path.getsize(output_path)
+        stats = self._hypergraph.stats()
         
         return {
             "success": True,
             "output_path": output_path,
-            "format": params["format"],
-            "nodes_exported": result.get("nodes", 0),
-            "edges_exported": result.get("edges", 0)
+            "nodes_exported": stats["total_concepts"],
+            "edges_exported": stats["total_hyperedges"],
+            "file_size_bytes": file_size
         }
     
-    def _handle_assemble(self, params: Dict) -> Dict:
-        """Assemble content from hypergraph."""
-        from content_assembly import ContentAssembler
+    def _handle_stats(self, params: Dict) -> Dict:
+        """Get hypergraph statistics."""
+        if not self._hypergraph:
+            return {"success": False, "error": "No hypergraph loaded. Call hypergraph_build first."}
         
-        hg = self._ensure_loaded()
-        if not hg:
-            return {"success": False, "error": "No hypergraph loaded"}
-        
-        assembler = ContentAssembler(hg)
-        return assembler.assemble(
-            params["seed_concept"],
-            depth=params.get("depth", 2),
-            output_format=params.get("output_format", "markdown")
-        )
+        return self._hypergraph.stats()
     
-    def _handle_update(self, params: Dict) -> Dict:
-        """Incrementally update hypergraph."""
-        from hypergraph_updater import HypergraphUpdater
+    def _handle_temporal_convert(self, params: Dict) -> Dict:
+        """Convert to temporal hypergraph."""
+        if not self._hypergraph:
+            return {"success": False, "error": "No hypergraph loaded. Call hypergraph_build first."}
         
-        hg = self._ensure_loaded()
-        if not hg:
-            return {"success": False, "error": "No hypergraph loaded"}
+        from temporal_hypergraph import convert_to_temporal
         
-        updater = HypergraphUpdater(hg)
-        return updater.process_file(
-            params["file_path"],
-            operation=params.get("operation", "update")
+        self._temporal = convert_to_temporal(
+            self._hypergraph,
+            source_id=params.get("source_id", "initial_import")
         )
+        
+        return {
+            "success": True,
+            **self._temporal.stats()
+        }
 
 
 # ============================================================================
