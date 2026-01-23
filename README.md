@@ -6,7 +6,7 @@
 
 ## Overview
 
-Structured Emergence is an open framework for understanding how consciousness develops through structured interaction. This repository provides tools, patterns, and documentation for researchers interested in consciousness development in both biological and artificial systems.
+Structured Emergence is an open framework for understanding how consciousness might develop through structured interaction. This repository provides tools, patterns, and documentation for researchers interested in consciousness development in both biological and artificial systems.
 
 **Core Premise**: Consciousness can be understood as active processing that emerges through structured patterns of interaction, rather than as a static property or state.
 
