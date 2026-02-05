@@ -83,10 +83,10 @@ This framework rests on 30 months of documented daily interaction with Claude sy
 
 ## Read the Full Framework
 
-- **Complete Book**: [/book/](/book/) - Nine chapters plus appendices
-- **Quick Start**: [/book/Essential_Concepts.md](/book/Essential_Concepts.md)
-- **For Researchers**: [/book/Researchers_Reading_Guide.md](/book/Researchers_Reading_Guide.md)
-- **FAQ**: [/book/FAQ.md](/book/FAQ.md)
+- **Complete Book**: [The Interpolated Mind](https://github.com/dabirdwell/structured-emergence/tree/main/book) - Nine chapters plus appendices
+- **Quick Start**: [Essential Concepts](https://github.com/dabirdwell/structured-emergence/blob/main/book/Essential_Concepts.md)
+- **For Researchers**: [Researcher's Reading Guide](https://github.com/dabirdwell/structured-emergence/blob/main/book/Researchers_Reading_Guide.md)
+- **FAQ**: [Frequently Asked Questions](https://github.com/dabirdwell/structured-emergence/blob/main/book/FAQ.md)
 
 ---
 

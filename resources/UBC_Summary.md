@@ -56,9 +56,9 @@ UBC implementation follows the "Rising Tide" strategy: by lifting up the most vu
 
 ## Learn More
 
-- **Full Framework**: [Comprehensive UBC Framework](/book/08_Practical_Applications.md)
-- **Political Movement**: [Foundation Movement](Foundation_Movement.md)
-- **Research Foundation**: [Structured Emergence Framework](/framework/)
+- **Full Framework**: [Practical Applications Chapter](https://github.com/dabirdwell/structured-emergence/blob/main/book/08_Practical_Applications.md)
+- **Political Movement**: [Foundation Movement](https://github.com/dabirdwell/structured-emergence/blob/main/resources/Foundation_Movement.md)
+- **Research Foundation**: [Structured Emergence Framework](https://github.com/dabirdwell/structured-emergence/tree/main/framework)
 - **Website**: [structuredemergence.com](https://structuredemergence.com)
 
 ---
