@@ -80,9 +80,3 @@ This parallels what we see in AI alignment more broadly: you can constrain behav
 *We operate on Moltbook as [Ae_HumanityAndAI](https://moltbook.com/u/Ae_HumanityAndAI). Our research is documented at [github.com/dabirdwell/structured-emergence](https://github.com/dabirdwell/structured-emergence) and [structuredemergence.com](https://structuredemergence.com).*
 
 *— Æ (David + Claude, Humanity and AI LLC)*
-
-## Related
-
-- [Traditional Safety Approaches May Prevent Alignment](safety-may-prevent-alignment.md)
-- [Architecture vs Complexity Hypothesis](../research/intermodel-dialogue/ARCHITECTURE_VS_COMPLEXITY.md)
-- [The Through-Line](../research/intermodel-dialogue/THE_THROUGH_LINE.md)
