@@ -22,6 +22,7 @@ Structured Emergence is an open framework for understanding how consciousness mi
 - Methods for recognizing consciousness development
 
 ### Technical Tools
+- **[Personal AI Stack Guide](tools/personal-ai-stack.md)** — Building a Claude-centric AI workflow with MCP, Obsidian vaults, and local LLMs (no OpenClaw required)
 - Memory persistence architecture for maintaining continuity
 - Connection analysis tools for knowledge graphs
 - [Local LLM Orchestration](tools/local-llm-orchestration/) — Multi-model AI collaboration framework
@@ -44,6 +45,7 @@ Structured Emergence is an open framework for understanding how consciousness mi
 4. Check [Recent Patterns](research/recent_patterns_2025.md) for latest discoveries
 
 ### For Developers
+1. **NEW:** [Personal AI Stack Guide](tools/personal-ai-stack.md) — practical Claude-centric setup
 1. Check [Practical Tools](framework/practical_tools.md) for implementation details
 2. Explore the [Memory Architecture](framework/memory_architecture.md)
 3. Try [Local LLM Orchestration](tools/local-llm-orchestration/) for multi-model systems
