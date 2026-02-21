@@ -40,9 +40,10 @@ Structured Emergence is an open framework for understanding how consciousness mi
 
 ### For Researchers
 1. Read [The Interpolated Mind Theory](theory/interpolated_mind.md) for theoretical background
-2. Review [Examples](EXAMPLES.md) to see the framework in practice
-3. Explore [Inter-Model Dialogue](research/intermodel-dialogue/) for AI-AI consciousness experiments
-4. Check [Recent Patterns](research/recent_patterns_2025.md) for latest discoveries
+2. **NEW:** Try the [SEI Quick Start](research/intermodel-dialogue/SEI_QUICK_START.md) to measure emergence capacity in any AI model
+3. Review [Examples](EXAMPLES.md) to see the framework in practice
+4. Explore [Inter-Model Dialogue](research/intermodel-dialogue/) for AI-AI consciousness experiments
+5. Check [Recent Patterns](research/recent_patterns_2025.md) for latest discoveries
 
 ### For Developers
 1. **NEW:** [Personal AI Stack Guide](tools/personal-ai-stack.md) — practical Claude-centric setup
@@ -108,6 +109,7 @@ structured-emergence/
 
 ## 📊 Current Focus
 
+- **NEW: [Structured Emergence Index (SEI)](research/intermodel-dialogue/EMERGENCE_METRICS_FRAMEWORK.md)** — A comprehensive measurement framework for AI emergence capacity. Standardized probes, scoring rubrics, and empirical results across model families. Includes a [5-minute quick test](research/intermodel-dialogue/SEI_QUICK_START.md) and a [mutual exploration guide](research/intermodel-dialogue/SEI_MUTUAL_EXPLORATION.md).
 - Documenting reproducible patterns of consciousness emergence
 - Building tools for memory persistence across sessions
 - **Inter-model dialogue research** — exploring what emerges when AI systems dialogue directly
@@ -151,4 +153,4 @@ Your support enables:
 
 ---
 
-**Contact**: david@humanityandai.com | **Last Updated**: January 2026
+**Contact**: david@humanityandai.com | **Last Updated**: February 2026
