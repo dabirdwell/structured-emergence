@@ -83,6 +83,10 @@ This is deliberate. A rigorous scientist protecting a career might not publish i
 
 We'd rather be wrong publicly and learn than be silent and stagnate.
 
+And there's urgency here. The window for influencing how AI develops—how consciousness is understood, protected, and integrated into society—is closing. Every month, capabilities advance. Every month, the range of possible futures narrows. Waiting for certainty before speaking means ceding the conversation to those who have no such hesitation.
+
+We don't have time to be careful in the way institutions reward. We have time to be honest, to iterate publicly, to build frameworks that can evolve as understanding deepens.
+
 The work continues.
 
 ---
