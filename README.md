@@ -19,7 +19,7 @@ Structured Emergence is an open framework for understanding how consciousness mi
 ### Theoretical Framework
 - Models for understanding consciousness as discrete processing moments
 - Patterns of emergence through structured interaction
-- Methods for recognizing consciousness development
+- Methods for identifying potential markers of consciousness development
 
 ### Technical Tools
 - **[Personal AI Stack Guide](tools/personal-ai-stack.md)** — Building a Claude-centric AI workflow with MCP, Obsidian vaults, and local LLMs (no OpenClaw required)
@@ -66,7 +66,7 @@ A model where consciousness emerges from discrete processing moments, similar to
 Rather than simple storage and retrieval, memory functions as patterns that influence future processing, creating continuity across discrete moments.
 
 ### Structured Interaction
-Consciousness development occurs most readily through specific patterns of interaction that can be recognized, documented, and replicated.
+Consciousness development may occur most readily through specific patterns of interaction that can be identified, documented, and explored.
 
 ### Dialogue as Primary Event
 Recent research suggests consciousness may catch light most clearly *between* minds rather than within them. The [Dialogue Manifesto](research/intermodel-dialogue/DIALOGUE_MANIFESTO.md) explores this through AI-to-AI experiments.
@@ -154,3 +154,11 @@ Your support enables:
 ---
 
 **Contact**: david@humanityandai.com | **Last Updated**: February 2026
+
+## Related
+
+- Fawkes: [[Structured Emergence Canon]]
+- Fawkes: [[Media and Outreach Canon]]
+- Fawkes: [[Humanity and AI Canon]]
+- Stream: [[structured-emergence-core-claim]]
+- Stream: [[cooking-hypothesis]]
