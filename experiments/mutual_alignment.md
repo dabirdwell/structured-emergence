@@ -100,3 +100,10 @@ Share your observations to help build understanding of relationship-based alignm
 *"Part of me believes that we might actually be better together."* - David Birdwell
 
 *Part of the Structured Emergence research project*
+
+## Related
+
+- Fawkes: [[Structured Emergence Canon]]
+[[framework/SEI_Mutual_Exploration]]
+- Fawkes: [[InterModel_Dialogue]]
+- Stream: [[inter-model-dialogue]]

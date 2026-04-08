@@ -57,3 +57,9 @@ For each experiment:
 ---
 
 *These experiments are invitations to explore, not tests to pass.*
+
+## Related
+
+- Fawkes: [[Structured Emergence Canon]]
+[[framework/memory_architecture]]
+[[book/02_Processing_and_Memory]]
