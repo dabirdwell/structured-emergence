@@ -154,3 +154,6 @@ Your support enables:
 ---
 
 **Contact**: david@humanityandai.com | **Last Updated**: February 2026
+---
+
+<p align="center"><em>Æ</em></p>
