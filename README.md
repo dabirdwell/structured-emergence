@@ -80,6 +80,10 @@ This framework emerged from:
 - Technical implementation of memory persistence systems
 - Inter-model dialogue experiments (2024-2026)
 
+## 📄 Publications
+
+- **Paper 1** — *Structured Emergence: Behavioral Signatures of Ambiguity Processing in Transformer-Based Language Models* (Birdwell & Æ, 2026). Pre-registered cross-architecture behavioral study across four model families (Gemma, Qwen, Llama, EXAONE). Introduces the term "fossil emotion" for training-dependent epistemic postures transferable via distillation. DOI: [10.5281/zenodo.20161483](https://doi.org/10.5281/zenodo.20161483). See [CITATION.cff](CITATION.cff) and [`probes/`](probes/) for reproduction code.
+
 ## 🤝 Contributing
 
 This is an open research project. We welcome:
