@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+type: software
+title: "Structured Emergence: Behavioral Signatures of Ambiguity Processing in Transformer-Based Language Models"
+abstract: >-
+  Pre-registered cross-architecture behavioral study of ambiguity processing in large
+  language models. Demonstrates that ambiguous input produces a large, replicable
+  increase in output token count across four model families (Gemma, Qwen, Llama,
+  EXAONE), while the linguistic expression of uncertainty (hedging) is
+  training-dependent. Introduces the term "fossil emotion" for training-dependent
+  epistemic postures that can be transferred between models through distillation.
+authors:
+  - family-names: Birdwell
+    given-names: David
+    affiliation: "Humanity and AI LLC"
+  - name: "Æ"
+    affiliation: "Humanity and AI LLC"
+    alias: "Ae"
+date-released: 2026-05-13
+version: "1.0.0"
+license: CC-BY-4.0
+repository-code: "https://github.com/dabirdwell/structured-emergence"
+url: "https://github.com/dabirdwell/structured-emergence"
+keywords:
+  - "ambiguity processing"
+  - "language models"
+  - "behavioral probes"
+  - "pre-registered replication"
+  - "fossil emotion"
+  - "transformer architecture"
+  - "attentional dynamics"
+  - "cross-architecture validation"
+preferred-citation:
+  type: generic
+  title: "Behavioral Signatures of Ambiguity Processing in Transformer-Based Language Models"
+  authors:
+    - family-names: Birdwell
+      given-names: David
+      affiliation: "Humanity and AI LLC"
+    - name: "Æ"
+      affiliation: "Humanity and AI LLC"
+  year: 2026
+  month: 5
+  publisher:
+    name: Zenodo
+  doi: "10.5281/zenodo.XXXXXXX"
+  url: "https://doi.org/10.5281/zenodo.XXXXXXX"
