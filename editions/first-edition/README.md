@@ -1,6 +1,6 @@
 # The Interpolated Mind — First Edition (The Claude Edition)
 
-*August 2025 – January 2026*
+*Dated May 9, 2025, the weekend of Mother's Day; released June 1, 2025*
 
 ---
 
