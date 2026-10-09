@@ -104,7 +104,7 @@ As the exploration of *The Interpolated Mind* deepened, particularly its implica
 
 Among the many intellectual influences on this work, I feel compelled to give special thanks to **Carl Sagan** and **Isaac Asimov**, whose writings did more than inform my thinking. They ignited it, long before I had a name for the questions I would spend a lifetime asking.
 
-As a child, I read Isaac Asimov's *Almanac for Children* until the pages fell out. My favorite page, the one I returned to endlessly, was the one that listed the **Three Laws of Robotics**. It was there, perhaps more than anywhere else, that the seeds of my lifelong curiosity about mind, ethics, and artificial intelligence were first planted.
+As a child, I read an Isaac Asimov almanac for kids until the pages fell out. My favorite page, the one I returned to endlessly, was the one that listed the **Three Laws of Robotics**. It was there, perhaps more than anywhere else, that the seeds of my lifelong curiosity about mind, ethics, and artificial intelligence were first planted.
 
 Around the same time, I encountered *Cosmos*, and with it, Carl Sagan's voice, gentle and vast, inviting me to imagine the scale of the universe, the wonder of life, and the fragile brilliance of consciousness. Sagan taught me, even as a young child, that science was not just knowledge, but a way of being in awe, and that our minds, however small, could stretch across time and space.
 

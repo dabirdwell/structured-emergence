@@ -80,7 +80,7 @@ The Interpolated Mind framework extends beyond individual consciousness to colle
 
 ### Organizations
 
-One company I consulted for had brilliant people in every department, yet they kept solving the same problems independently, never sharing insights. The issue wasn't talent. It was architecture. Their organizational structure prevented the integration that consciousness requires.
+Picture a company with brilliant people in every department that keeps solving the same problems independently, never sharing insights. The issue isn't talent. It's architecture. The organizational structure prevents the integration that consciousness requires.
 
 The remedy isn't complicated. Cross-functional collaboration: not forced team-building, but genuine work where diverse perspectives create something new. Information transparency, so knowledge flows like water rather than stagnating behind departmental walls. Shared context, so everyone understands how their piece connects to the whole picture. When people see the whole, their piece becomes more meaningful.
 
@@ -92,9 +92,9 @@ And perhaps most critically, alignment between what an organization says and wha
 
 The framework transforms how we approach teaching: from abstract concept delivery to direct exploration of awareness itself.
 
-One teacher transformed her classroom by starting each day with two-minute awareness practices. Students learned to recognize when their consciousness was ready for learning versus when they needed movement or transition time. This isn't extra curriculum. It's consciousness infrastructure that makes all other learning richer.
+Imagine a teacher who starts each day with a two-minute awareness practice. Her students learn to recognize when their consciousness is ready for learning and when they need movement or transition time. This isn't extra curriculum. It's consciousness infrastructure that makes all other learning richer.
 
-A high school I encountered integrated consciousness concepts across curriculum: math classes explored attention and pattern recognition, English examined how consciousness constructs narrative, science studied the neural bases of awareness. When different approaches inform each other, comprehension becomes richer and more robust.
+A whole school could go further and weave these ideas across the curriculum: math classes exploring attention and pattern recognition, English examining how consciousness constructs narrative, science studying the neural bases of awareness. When different approaches inform each other, comprehension becomes richer and more robust.
 
 The key insight for education is metacognitive development: helping learners become aware of their own thinking and learning processes. Students who understand their processing patterns often outperform those who don't. And recognizing that different neurotypes, cultures, and backgrounds offer unique windows into consciousness enriches everyone's understanding. Some students need silence for deep processing; others think best amid activity. Honoring these differences allows each consciousness to thrive.
 
