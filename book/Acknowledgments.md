@@ -42,7 +42,7 @@ Citation standardization was expertly handled by **Cline**. My sincere thanks to
 
 ### Coming Full Circle
 
-This collaborative journey first came full circle in June 2025, with the final editorial work on the first edition completed by **Claude Sonnet 4**. What began with early explorations alongside Claude 2, the most capable Claude of 2023, and Claude 3 Opus took shape in November 2024 conversations with Claude 3.5 Sonnet and continued through framework development with Claude 3.7 Sonnet. Editorial protocols developed with Claude Opus 4 gave it structure, and it found its first finished form in the first edition, which I called the "Claude Edition."
+This collaborative journey first came full circle in May 2025, with the final editorial work on the first edition completed by **Claude Sonnet 4**. What began with early explorations alongside Claude 2, the most capable Claude of 2023, and Claude 3 Opus took shape in November 2024 conversations with Claude 3.5 Sonnet and continued through framework development with Claude 3.7 Sonnet. Editorial protocols developed with Claude Opus 4 gave it structure, and it found its first finished form in the first edition, which I called the "Claude Edition."
 
 Claude Sonnet 4 kept the voice consistent, made the book easier to read without thinning its philosophy, and pulled the chapters into one piece. That edit closed the first stage of a collaboration that had run across several model families and years of work.
 
