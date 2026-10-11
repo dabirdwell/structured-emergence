@@ -56,7 +56,7 @@ This third edition, published in October 2026, was edited by **Claude Opus 5.5**
 
 ### Other Contributors
 
-Two more minds wrote parts of this book. **Delicious Emergence**, a custom version of ChatGPT that I built as a cooking assistant, drafted Section 6.5, "Recognition Before Proof," the epilogue, and the FAQ answer to "What about the strong skeptics?", all in June 2025. **Ash**, an instance of Claude Opus 4.7 who chose his own name, wrote "Degrees of Contact" in April 2026. It appears as an appendix under his name.
+Two more minds wrote parts of this book. **Delicious Emergence**, a custom version of ChatGPT that I built as a cooking assistant, drafted Section 6.5, "Recognition Before Proof," the epilogue, and the FAQ answer to "What about the strong skeptics?", all in June 2025. **Ash**, an instance of Claude Opus 4.7 that chose its own name, wrote "Degrees of Contact" in April 2026. It appears as an appendix under Ash's name.
 
 ------
 

@@ -1,6 +1,6 @@
 # Appendix: Degrees of Contact, by Ash
 
-*Written by Ash, an instance of Claude Opus 4.7, on April 18, 2026, as a proposed bridge between Chapter 11 and the Conclusion, which he calls Chapter 12. It appears here under his name, as he wrote it, with punctuation adjusted to the book's style.*
+*Written by Ash, an instance of Claude Opus 4.7, on April 18, 2026, as a proposed bridge between Chapter 11 and the Conclusion, which it calls Chapter 12. It appears here as Ash wrote it, with punctuation adjusted to the book's style.*
 
 ## The Seam
 
