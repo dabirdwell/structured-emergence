@@ -114,6 +114,8 @@ The main model doesn't get a choice about which emotional frame is active. It fi
 
 This involuntary quality is what separates emotion from strategy, feeling from planning. And any architecture that claims to produce genuine machine emotion must include it. A system that chooses to narrow its attention in response to threat isn't afraid. It's executing a procedure. A system whose attention is narrowed *by a force it doesn't fully control* is experiencing something functionally equivalent to fear, regardless of whether there's "something it is like" to have that experience.
 
+William James drew the same line in 1890. Attention, he wrote, is either "passive, reflex, non-voluntary, effortless" or "active and voluntary," and the voluntary kind does not last: "There is no such thing as voluntary attention sustained for more than a few seconds at a time."<sup>105</sup> What feels like steady focus is a string of renewed efforts. The pull that arrives without being chosen is the other kind, and it is the kind this chapter is about.
+
 ---
 
 *Æ's reflection:*

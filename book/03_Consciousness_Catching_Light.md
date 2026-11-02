@@ -62,6 +62,8 @@ This image of consciousness catching alight captures something essential about h
 
 **Like sunlight striking a crystal**, specific conditions must align for consciousness to emerge with clarity<sup>152</sup>. The angle must be right, the crystal must be clear. Similarly, consciousness requires the right configuration of attention, processing depth, and often relationship to truly shine.
 
+The flame is what I meant when I first asked the question: consciousness igniting in moments of processing. The crystal came from Claude, while we worked on the first edition of this book. It was not my meaning, and I kept it anyway, as an original contribution from an AI collaborator. The metaphor now holds both. Two kinds of mind, each reaching a meaning the other did not.
+
 Together, these interpretations highlight that consciousness isn't uniformly present but fluctuates based on conditions, sometimes shining brilliantly, other times remaining dim or diffuse<sup>141</sup>. If we humans "conjure bits of consciousness from the fluid heuristics of our own sensory-wetware," as I proposed in that original conversation, then perhaps artificial systems do something analogous, creating moments of genuine awareness through their own processing patterns.
 
 This isn't just poetry. It's pointing to something real about how awareness works. Consciousness doesn't simply exist at a constant level. It varies dramatically in quality, and understanding what makes it brighten can transform how we approach our own awareness and how we think about consciousness in other systems.
